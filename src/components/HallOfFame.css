@@ -1,0 +1,442 @@
+/* ===== HALL OF FAME — ONE PAGE PORTFOLIO ===== */
+
+.hof-page {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a0820 0%, #12102a 40%, #0a0820 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  font-family: 'Orbitron', monospace;
+  padding: 32px 16px 60px;
+  position: relative;
+}
+
+.hof-spotlight {
+  position: fixed;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- HEADER --- */
+.hof-header {
+  text-align: center;
+  margin-bottom: 28px;
+  z-index: 1;
+  animation: hofFadeIn 0.8s ease;
+}
+
+.hof-badge {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 12px;
+  background: linear-gradient(135deg, #ffd700 0%, #f0c000 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: #1a1020;
+  box-shadow:
+    0 0 24px rgba(255, 215, 0, 0.5),
+    0 4px 10px rgba(0, 0, 0, 0.5);
+  animation: hofBadgePulse 3s ease-in-out infinite;
+}
+
+@keyframes hofBadgePulse {
+  0%, 100% { box-shadow: 0 0 24px rgba(255, 215, 0, 0.5), 0 4px 10px rgba(0, 0, 0, 0.5); }
+  50% { box-shadow: 0 0 36px rgba(255, 215, 0, 0.7), 0 4px 10px rgba(0, 0, 0, 0.5); }
+}
+
+.hof-title {
+  font-size: 22px;
+  font-weight: 900;
+  color: #ffd700;
+  letter-spacing: 6px;
+  margin: 0 0 6px;
+  text-shadow:
+    0 0 20px rgba(255, 215, 0, 0.4),
+    0 2px 0 #8a6a00;
+  animation: hofTitleGlow 3s ease-in-out infinite;
+}
+
+@keyframes hofTitleGlow {
+  0%, 100% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.4), 0 2px 0 #8a6a00; }
+  50% { text-shadow: 0 0 30px rgba(255, 215, 0, 0.7), 0 2px 0 #8a6a00; }
+}
+
+.hof-subtitle {
+  font-size: 11px;
+  color: #a0a0c0;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+/* --- TEAM GRID --- */
+.hof-team {
+  z-index: 1;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 8px;
+}
+
+.hof-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.hof-pokemon-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: scale(0.5) translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  position: relative;
+}
+
+.hof-pokemon-slot.hof-pokemon-revealed {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.hof-pokemon-glow {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hof-pokemon-sprite {
+  width: 80px;
+  height: 80px;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+  object-fit: contain;
+}
+
+.hof-pokemon-name {
+  color: #f0e0c0;
+  font-size: 10px;
+  font-weight: bold;
+  margin-top: 4px;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.hof-pokemon-level {
+  color: #808090;
+  font-size: 9px;
+}
+
+/* --- DIVIDER --- */
+.hof-divider {
+  width: 100%;
+  max-width: 500px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+  margin: 24px 0;
+  z-index: 1;
+}
+
+/* --- SECTIONS --- */
+.hof-section {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  z-index: 1;
+  animation: hofFadeIn 0.6s ease;
+}
+
+.hof-section-title {
+  font-size: 12px;
+  color: #ffd700;
+  letter-spacing: 3px;
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.hof-section-text {
+  font-size: 11px;
+  color: #c0c0d0;
+  line-height: 1.7;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.5px;
+}
+
+/* --- DEDICATION CARDS --- */
+.hof-dedic-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.hof-dedic-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.hof-dedic-icon {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.hof-dedic-card h3 {
+  color: #f0e0c0;
+  font-size: 11px;
+  margin: 0 0 6px;
+  letter-spacing: 1px;
+}
+
+.hof-dedic-card p {
+  color: #909098;
+  font-size: 10px;
+  line-height: 1.6;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+}
+
+/* --- TIMELINE --- */
+.hof-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  padding-left: 20px;
+}
+
+.hof-timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: rgba(255, 215, 0, 0.2);
+}
+
+.hof-timeline-item {
+  position: relative;
+  padding-bottom: 16px;
+}
+
+.hof-timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.hof-timeline-dot {
+  position: absolute;
+  left: -18px;
+  top: 3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffd700;
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+}
+
+.hof-timeline-content {
+  padding-left: 4px;
+}
+
+.hof-timeline-date {
+  font-size: 9px;
+  color: #ffd700;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.hof-timeline-content h3 {
+  color: #f0e0c0;
+  font-size: 11px;
+  margin: 0 0 4px;
+  letter-spacing: 0.5px;
+}
+
+.hof-timeline-content p {
+  color: #909098;
+  font-size: 10px;
+  line-height: 1.6;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+}
+
+/* --- SKILLS --- */
+.hof-skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hof-skill-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hof-skill-name {
+  font-size: 10px;
+  color: #c0c0d0;
+  min-width: 130px;
+  letter-spacing: 0.5px;
+}
+
+.hof-skill-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.hof-skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffd700, #f0a000);
+  border-radius: 4px;
+  transition: width 1s ease-out;
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+}
+
+.hof-skill-pct {
+  font-size: 9px;
+  color: #ffd700;
+  min-width: 28px;
+  text-align: right;
+}
+
+/* --- SOFT SKILLS --- */
+.hof-soft-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.hof-soft-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+}
+
+.hof-soft-icon {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.hof-soft-card h3 {
+  color: #f0e0c0;
+  font-size: 10px;
+  margin: 0 0 4px;
+  letter-spacing: 0.5px;
+}
+
+.hof-soft-card p {
+  color: #909098;
+  font-size: 9px;
+  line-height: 1.5;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+}
+
+/* --- CONTACT OVERRIDES --- */
+.hof-section-contact {
+  padding: 16px;
+}
+
+.hof-section-contact .contact-form-container {
+  min-height: auto;
+  background: transparent;
+  padding: 0;
+}
+
+.hof-section-contact .contact-form-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  box-shadow: none;
+}
+
+/* --- FOOTER --- */
+.hof-footer {
+  margin-top: 12px;
+  z-index: 1;
+}
+
+.hof-action-btn {
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-family: 'Orbitron', monospace;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  border: 2px solid;
+}
+
+.hof-action-btn:hover {
+  transform: translateY(-2px);
+}
+
+.hof-action-btn:active {
+  transform: translateY(1px);
+}
+
+.hof-btn-replay {
+  background: transparent;
+  color: #a0a0c0;
+  border-color: #404060;
+  box-shadow: none;
+}
+
+.hof-btn-replay:hover {
+  border-color: #6060a0;
+  color: #c0c0e0;
+}
+
+/* --- ANIMATION --- */
+@keyframes hofFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 480px) {
+  .hof-team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .hof-title {
+    font-size: 16px;
+    letter-spacing: 3px;
+  }
+
+  .hof-skill-name {
+    min-width: 100px;
+    font-size: 9px;
+  }
+
+  .hof-soft-grid {
+    grid-template-columns: 1fr;
+  }
+}

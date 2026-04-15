@@ -1,0 +1,244 @@
+.gym-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a3c 0%, #2a2a5c 100%);
+  padding: 8px;
+  font-family: 'Orbitron', 'Arial', sans-serif;
+}
+
+.gym-interior {
+  background: linear-gradient(135deg, #3a3a6c 0%, #2a2a5c 100%);
+  border: 3px solid #ffff00;
+  border-radius: 0;
+  padding: 20px;
+  max-width: 520px;
+  width: 90%;
+  color: #fff;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.6),
+    0 0 12px rgba(255, 255, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gym-header {
+  text-align: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #ffff00;
+}
+
+.gym-icon {
+  font-size: 56px;
+  margin-bottom: 8px;
+  animation: bounce 0.6s infinite;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.5));
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.gym-interior h2 {
+  margin: 0;
+  font-size: 16px;
+  color: #ffff00;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.gym-interior p {
+  font-size: 11px;
+  margin: 8px 0;
+  line-height: 1.3;
+  color: #ddd;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.gym-buttons {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.gym-button {
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 0;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  transition: all 0.1s ease;
+  box-shadow: 
+    1px 1px 0px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.gym-button:hover {
+  background: linear-gradient(135deg, #ff3333 0%, #ff0000 100%);
+  transform: translate(-1px, -1px);
+  box-shadow: 
+    2px 2px 0px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.gym-button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 
+    0 0 0px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.gym-header h1 {
+  color: #ffd700;
+  font-size: 36px;
+  margin: 0 0 10px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.gym-leader-title {
+  color: #bdc3c7;
+  font-size: 18px;
+  margin: 0;
+}
+
+.gym-arena {
+  margin: 30px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px dashed #ffd700;
+}
+
+.trainer-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.trainer-avatar {
+  font-size: 60px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.trainer-details h2 {
+  margin: 0 0 10px 0;
+  color: #ffd700;
+  font-size: 24px;
+}
+
+.trainer-details p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ecf0f1;
+}
+
+.gym-description {
+  text-align: center;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(255, 215, 0, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #ffd700;
+}
+
+.gym-description p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.gym-controls {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.battle-button {
+  padding: 15px 40px;
+  background-color: #f39c12;
+  color: white;
+  border: 2px solid #ffd700;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
+}
+
+.battle-button:hover {
+  background-color: #e67e22;
+  transform: scale(1.05);
+  box-shadow: 0 7px 20px rgba(243, 156, 18, 0.6);
+}
+
+.battle-button:active {
+  transform: scale(0.98);
+}
+
+.exit-button {
+  padding: 15px 40px;
+  background-color: #e74c3c;
+  color: white;
+  border: 2px solid #c0392b;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+.exit-button:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+  box-shadow: 0 7px 20px rgba(231, 76, 60, 0.6);
+}
+
+.exit-button:active {
+  transform: scale(0.98);
+}

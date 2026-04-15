@@ -1,0 +1,370 @@
+/* Champion Room - Sala del Campeón D/P faithful recreation */
+
+.champion-room-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #4a4a4a;
+  font-family: 'Orbitron', monospace;
+  overflow: hidden;
+}
+
+/* Top location bar */
+.cr-top-bar {
+  background: linear-gradient(180deg, #333 0%, #222 100%);
+  border-bottom: 3px solid #ffd700;
+  padding: 6px 12px;
+  text-align: center;
+}
+
+.cr-location-name {
+  color: #ffd700;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+/* Room container */
+.cr-room-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: #5a5a5a;
+}
+
+/* Room grid — 15x13 */
+.cr-room-grid {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(13, 1fr);
+  gap: 0px;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 15 / 13;
+  position: relative;
+  box-shadow:
+    0 0 30px rgba(0, 0, 0, 0.5),
+    inset 0 0 20px rgba(0, 0, 0, 0.2);
+  image-rendering: pixelated;
+}
+
+/* Base tile */
+.cr-tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* Metal floor tile — silver/white like D/P tileset */
+.cr-floor {
+  background: url('/tiles/floor.png') center/cover;
+  image-rendering: pixelated;
+}
+
+/* Wall — dark charcoal like D/P tileset */
+.cr-wall {
+  background: url('/tiles/wall.png') center/cover;
+  image-rendering: pixelated;
+}
+
+/* Wall top — dark with subtle amber gems */
+.cr-wall-top {
+  background: url('/tiles/wall-top.png') center/cover;
+  image-rendering: pixelated;
+}
+
+/* Entrance / doorway — dark blue-black */
+.cr-entrance {
+  background: url('/tiles/entrance.png') center/cover;
+  image-rendering: pixelated;
+}
+
+/* Entrance top — blue with gold center stripe (D/P door) */
+.cr-entrance-top {
+  background: url('/tiles/entrance-top.png') center/cover;
+  image-rendering: pixelated;
+}
+
+/* North door — opens after post-victory dialog */
+.cr-north-door {
+  background: linear-gradient(180deg, #1a0a2a 0%, #2a1a4a 40%, #ffd700 50%, #2a1a4a 60%, #1a0a2a 100%);
+  border: 1px solid #ffd700;
+  animation: northDoorGlow 1.5s ease-in-out infinite;
+  box-shadow: inset 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+@keyframes northDoorGlow {
+  0%, 100% { box-shadow: inset 0 0 6px rgba(255, 215, 0, 0.3), 0 0 4px rgba(255, 215, 0, 0.2); }
+  50% { box-shadow: inset 0 0 12px rgba(255, 215, 0, 0.6), 0 0 10px rgba(255, 215, 0, 0.4); }
+}
+
+/* Machine / console — silver body, green orb, red/black stripes (D/P) */
+.cr-machine {
+  background: url('/tiles/machine.png') center/cover;
+  image-rendering: pixelated;
+}
+
+/* Cyan/teal ring — dark base with glowing cyan segments (D/P tileset) */
+.cr-ring {
+  background: url('/tiles/ring.png') center/cover;
+  image-rendering: pixelated;
+  animation: ringPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.15); }
+}
+
+/* Arena inner — deep crimson red with spotted texture (D/P) */
+/* Arena inner — deep crimson red (D/P) */
+.cr-arena {
+  background: url('/tiles/arena.png') center/cover;
+  image-rendering: pixelated;
+}
+
+/* NPC */
+.cr-npc {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.cr-npc-sprite {
+  width: 100%;
+  height: 130%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cr-npc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
+  animation: npcIdle 2s ease-in-out infinite;
+}
+
+@keyframes npcIdle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+.cr-npc-glow .cr-npc-img {
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
+}
+
+/* Interact hint */
+.cr-interact-hint {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #ffd700;
+  padding: 2px 6px;
+  border-radius: 2px;
+  animation: hintBounce 0.8s ease-in-out infinite;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.cr-interact-hint span {
+  color: #ffd700;
+  font-size: 8px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+@keyframes hintBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-3px); }
+}
+
+/* Player */
+.cr-player {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 8;
+  transition: left 150ms linear, top 150ms linear;
+  pointer-events: none;
+}
+
+.cr-player-sprite-img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  z-index: 2;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+.cr-walking .cr-player-sprite-img {
+  animation: walkBob 0.15s ease;
+}
+
+@keyframes walkBob {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
+
+.cr-player-shadow {
+  position: absolute;
+  bottom: 5%;
+  width: 60%;
+  height: 15%;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.35), transparent);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.cr-player-tile {
+}
+
+/* Dialog overlay */
+.cr-dialog-overlay {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  padding: 0 12px;
+  pointer-events: auto;
+}
+
+/* Dialog box - Pokémon DS style */
+.cr-dialog-box {
+  width: 100%;
+  max-width: 500px;
+  background: linear-gradient(180deg, #f8f8f8 0%, #e8e8e8 100%);
+  border: 3px solid #333;
+  border-radius: 4px;
+  padding: 12px 16px;
+  cursor: pointer;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+
+.cr-dialog-speaker {
+  position: absolute;
+  top: -12px;
+  left: 12px;
+  background: #333;
+  color: #ffd700;
+  font-size: 9px;
+  font-weight: bold;
+  padding: 2px 8px;
+  letter-spacing: 1px;
+  border-radius: 2px;
+}
+
+.cr-dialog-text {
+  color: #1a1a1a;
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+  line-height: 1.5;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.cr-dialog-cursor {
+  animation: cursorBlink 0.6s steps(1) infinite;
+  color: #333;
+  margin-left: 1px;
+}
+
+@keyframes cursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.cr-dialog-advance {
+  text-align: right;
+  color: #666;
+  font-size: 9px;
+  font-weight: bold;
+  margin-top: 6px;
+  animation: advancePulse 1s ease-in-out infinite;
+}
+
+@keyframes advancePulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Yes/No choice buttons */
+.cr-dialog-choices {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.cr-choice-btn {
+  padding: 6px 24px;
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 2px solid #333;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.cr-choice-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.cr-choice-btn:active {
+  transform: translateY(0);
+}
+
+.cr-choice-yes {
+  background: linear-gradient(180deg, #48b868, #38a858);
+  color: #fff;
+  border-color: #2a8a40;
+}
+
+.cr-choice-no {
+  background: linear-gradient(180deg, #c85050, #b04040);
+  color: #fff;
+  border-color: #903030;
+}
+
+/* Controls bar */
+.cr-controls-bar {
+  background: #444;
+  border-top: 2px solid #666;
+  padding: 4px 12px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.cr-controls-bar span {
+  color: #8888aa;
+  font-size: 9px;
+  letter-spacing: 1px;
+}

@@ -1,0 +1,380 @@
+/* Pokemon Nintendo DS - Elementos Visuales Avanzados */
+
+/* Controles de la pantalla táctil */
+.touch-screen-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px;
+  background: linear-gradient(135deg, #d4b896 0%, #dcc4a0 100%);
+  border: 2px solid #5a4a3a;
+  border-radius: 0;
+}
+
+.control-row {
+  display: flex;
+  gap: 4px;
+  justify-content: space-around;
+}
+
+.stylus-button {
+  flex: 1;
+  padding: 6px;
+  background: linear-gradient(135deg, #333333 0%, #111111 100%);
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 0;
+  font-size: 9px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  transition: all 0.08s ease;
+  box-shadow: 
+    1px 1px 0px rgba(0, 0, 0, 0.7),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.stylus-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #444444 0%, #222222 100%);
+  transform: translate(-1px, -1px);
+  box-shadow: 
+    2px 2px 0px rgba(0, 0, 0, 0.7),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.stylus-button:active:not(:disabled) {
+  transform: translate(1px, 1px);
+  box-shadow: 
+    0 0 0px rgba(0, 0, 0, 0.7),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Indicadores y etiquetas */
+.indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #000;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+  padding: 3px 6px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+}
+
+.indicator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.indicator-dot.active {
+  background: #00ff00;
+  box-shadow: 0 0 4px rgba(0, 255, 0, 0.6);
+}
+
+.indicator-dot.inactive {
+  background: #999999;
+}
+
+.indicator-dot.warning {
+  background: #ffff00;
+  box-shadow: 0 0 4px rgba(255, 255, 0, 0.6);
+}
+
+.indicator-dot.danger {
+  background: #ff0000;
+  box-shadow: 0 0 4px rgba(255, 0, 0, 0.6);
+}
+
+/* Mensaje flotante */
+.pop-message {
+  position: fixed;
+  background: linear-gradient(135deg, #ffff00 0%, #ffcc00 100%);
+  border: 2px solid #000;
+  border-radius: 0;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+  z-index: 1000;
+  box-shadow: 
+    2px 2px 0px rgba(0, 0, 0, 0.5),
+    3px 3px 6px rgba(0, 0, 0, 0.3);
+  animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), popOut 0.3s ease-out 2.7s;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes popOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* Menu desplegable */
+.ds-menu {
+  background: linear-gradient(135deg, #e6c294 0%, #f0d6a8 100%);
+  border: 2px solid #5a4a3a;
+  border-radius: 0;
+  box-shadow: 
+    2px 2px 0px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  padding: 4px;
+  position: absolute;
+  z-index: 500;
+  min-width: 120px;
+}
+
+.ds-menu-item {
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
+  color: #000;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+  border: 1px solid transparent;
+  margin-bottom: 2px;
+}
+
+.ds-menu-item:hover {
+  background: linear-gradient(135deg, #d4b896 0%, #dcc4a0 100%);
+  border: 1px solid #5a4a3a;
+  transform: translate(-1px, -1px);
+}
+
+.ds-menu-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Indicador de carga (progress spinner) */
+.ds-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #5a4a3a;
+  border-top: 2px solid #ff0000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Efecto 3D para botones */
+.ds-button-3d {
+  position: relative;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 0;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  box-shadow: 
+    4px 4px 0px rgba(0, 0, 0, 0.5),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(0);
+  transition: all 0.1s ease;
+}
+
+.ds-button-3d:hover:not(:disabled) {
+  box-shadow: 
+    2px 2px 0px rgba(0, 0, 0, 0.5),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(2px);
+}
+
+.ds-button-3d:active:not(:disabled) {
+  box-shadow: 
+    0 0 0px rgba(0, 0, 0, 0.5),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(4px);
+}
+
+/* Tabs de navegación */
+.ds-tabs {
+  display: flex;
+  border-bottom: 2px solid #5a4a3a;
+  gap: 2px;
+  margin-bottom: 8px;
+}
+
+.ds-tab {
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #d4b896 0%, #dcc4a0 100%);
+  border: 2px solid #5a4a3a;
+  border-bottom: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #000;
+  transition: all 0.1s ease;
+  border-radius: 0;
+}
+
+.ds-tab:hover {
+  background: linear-gradient(135deg, #e0c4a8 0%, #e8d0b0 100%);
+  transform: translate(0, -2px);
+}
+
+.ds-tab.active {
+  background: linear-gradient(135deg, #e6c294 0%, #f0d6a8 100%);
+  border-bottom: 2px solid #e6c294;
+  transform: translateY(2px);
+}
+
+/* Panel separador */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, 
+    rgba(90, 74, 58, 0) 0%,
+    rgba(90, 74, 58, 0.5) 50%,
+    rgba(90, 74, 58, 0) 100%);
+  margin: 6px 0;
+}
+
+.divider-vertical {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, 
+    rgba(90, 74, 58, 0) 0%,
+    rgba(90, 74, 58, 0.5) 50%,
+    rgba(90, 74, 58, 0) 100%);
+  margin: 0 6px;
+}
+
+/* Etiqueta flotante */
+.badge {
+  display: inline-block;
+  padding: 2px 6px;
+  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 0;
+  font-size: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.badge-blue {
+  background: linear-gradient(135deg, #0000ff 0%, #0000cc 100%);
+}
+
+.badge-green {
+  background: linear-gradient(135deg, #00cc00 0%, #009900 100%);
+}
+
+.badge-yellow {
+  background: linear-gradient(135deg, #ffcc00 0%, #ffaa00 100%);
+  color: #000;
+}
+
+/* Ojo de buey (spotlight) */
+.spotlight {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+  pointer-events: none;
+  border-radius: 0;
+}
+
+/* Efecto de lupa */
+.magnifier {
+  position: relative;
+  display: inline-block;
+}
+
+.magnifier::after {
+  content: '🔍';
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Paleta de colores Pokémon DS */
+.color-swatch {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000;
+  border-radius: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  cursor: default;
+}
+
+/* Efectos de texto */
+.text-shadow-hard {
+  text-shadow: 
+    2px 2px 0 rgba(0, 0, 0, 0.8),
+    -1px -1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.text-glow {
+  text-shadow: 
+    0 0 4px rgba(255, 255, 0, 0.8),
+    0 0 8px rgba(255, 0, 0, 0.4);
+  color: #ffff00;
+}
+
+/* Contenedor fluido responsivo para DS */
+@media (max-width: 480px) {
+  .ds-framework {
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .ds-screen-bottom {
+    flex: 0 0 150px;
+  }
+
+  .ds-button {
+    padding: 4px 8px;
+    font-size: 9px;
+  }
+
+  .info-panel {
+    padding: 4px;
+  }
+}

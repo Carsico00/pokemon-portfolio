@@ -1,0 +1,671 @@
+/* Professor Intro — Nintendo DS Dual Screen D/P Style */
+
+.pi-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+  font-family: 'Courier New', monospace;
+  image-rendering: pixelated;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === TOP SCREEN === */
+.pi-top-screen {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Golden gradient background (Platinum intro) */
+.pi-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #c8b868 0%,
+    #d8c878 15%,
+    #e0d080 30%,
+    #d0c060 50%,
+    #b8a848 70%,
+    #a89838 85%,
+    #988828 100%
+  );
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.pi-bg-visible {
+  opacity: 1;
+}
+
+/* === DS HINGE === */
+.pi-ds-hinge {
+  height: 10px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #2a2a2a 0%, #444 30%, #555 50%, #444 70%, #2a2a2a 100%);
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -1px 0 rgba(0,0,0,0.3);
+}
+
+/* === BOTTOM SCREEN — Pokeball === */
+.pi-bottom-screen {
+  height: 200px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #d8c8a8 0%, #c8b898 50%, #b8a888 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid #888;
+}
+
+.pi-bottom-pokeball {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #a09080;
+  position: relative;
+  overflow: hidden;
+  opacity: 0.35;
+}
+
+.pi-bottom-pokeball-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, #c8b898 0%, #b8a888 100%);
+}
+
+.pi-bottom-pokeball-bot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, #d0c0a0 0%, #c0b090 100%);
+}
+
+.pi-bottom-pokeball-band {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: #a09080;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.pi-bottom-pokeball-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #d0c0a0;
+  border: 3px solid #a09080;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pi-bottom-pokeball-inner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c0b090;
+  border: 2px solid #a09080;
+}
+
+/* === Press Start screen === */
+.pi-start-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #1a1a2e 0%, #0a0a1a 100%);
+  z-index: 20;
+  cursor: pointer;
+}
+
+.pi-start-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffd700;
+  letter-spacing: 8px;
+  text-shadow:
+    0 0 20px rgba(255, 215, 0, 0.6),
+    2px 2px 0 #8a6800;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.pi-start-subtitle {
+  font-size: 18px;
+  color: #c0c0c0;
+  letter-spacing: 12px;
+  margin-top: 4px;
+  text-shadow: 0 0 10px rgba(192, 192, 192, 0.4);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.pi-start-prompt {
+  margin-top: 50px;
+  font-size: 12px;
+  color: #8888aa;
+  letter-spacing: 2px;
+  animation: startPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes startPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* === Fade overlays === */
+.pi-fade {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.pi-fade-in {
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.pi-fade-out {
+  animation: fadeOut 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* === Professor Rowan === */
+.pi-rowan-container {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.pi-rowan-sprite {
+  width: 160px;
+  height: auto;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.pi-rowan-enter {
+  animation: rowanSlideIn 0.8s ease-out;
+}
+
+@keyframes rowanSlideIn {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* === Pokeball opening sequence (center of top screen) === */
+.pi-pokeball-center-area {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.pi-pokeball-big {
+  width: 72px;
+  height: 72px;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #333;
+  z-index: 2;
+}
+
+.pi-pokeball-drop {
+  animation: pokeballDrop 0.8s cubic-bezier(0.22, 0.68, 0.37, 1.22);
+}
+
+.pi-pokeball-shaking {
+  animation: pokeballShake 0.15s ease-in-out 6;
+}
+
+.pi-pokeball-burst {
+  animation: pokeballBurst 0.5s ease-out forwards;
+}
+
+@keyframes pokeballDrop {
+  0% { opacity: 0; transform: translateY(-120px) rotate(-30deg); }
+  60% { opacity: 1; transform: translateY(10px) rotate(5deg); }
+  80% { transform: translateY(-8px) rotate(-2deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes pokeballShake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-12deg); }
+  75% { transform: rotate(12deg); }
+}
+
+@keyframes pokeballBurst {
+  0% { transform: scale(1); opacity: 1; filter: brightness(1); }
+  40% { transform: scale(1.4); opacity: 1; filter: brightness(2.5); }
+  100% { transform: scale(0.3); opacity: 0; filter: brightness(4); }
+}
+
+/* White flash when pokeball opens */
+.pi-pokeball-flash {
+  position: absolute;
+  inset: 0;
+  background: white;
+  z-index: 15;
+  animation: pokeFlash 0.6s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes pokeFlash {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.pi-pokeball-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, #ff4444 0%, #cc2222 100%);
+}
+
+.pi-pokeball-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, #f0f0f0 0%, #d0d0d0 100%);
+}
+
+.pi-pokeball-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #555;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.pi-pokeball-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  background: #f8f8f8;
+  border: 3px solid #555;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+/* Munchlax next to Rowan */
+.pi-munchlax-beside {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(40px);
+  z-index: 6;
+  animation: munchlaxMaterialize 0.8s ease-out;
+}
+
+.pi-munchlax {
+  width: 80px;
+  height: 80px;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+  animation: pokemonFloat 3s ease-in-out infinite;
+}
+
+@keyframes munchlaxMaterialize {
+  0% { opacity: 0; transform: translateX(40px) scale(0.2); filter: brightness(4); }
+  50% { opacity: 1; transform: translateX(40px) scale(1.15); filter: brightness(1.5); }
+  70% { transform: translateX(40px) scale(0.95); }
+  100% { opacity: 1; transform: translateX(40px) scale(1); filter: brightness(1); }
+}
+
+@keyframes pokemonAppear {
+  0% { opacity: 0; transform: scale(0.3); filter: brightness(3); }
+  60% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pokemonFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* === Gender selection — D/P style (both visible, colored backgrounds) === */
+.pi-gender-sprites {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 5;
+}
+
+.pi-gender-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.pi-gender-option:hover {
+  filter: brightness(1.1);
+}
+
+.pi-gender-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.pi-gender-bg-girl {
+  background: linear-gradient(
+    180deg,
+    #e8a0b0 0%,
+    #d89098 20%,
+    #c88090 40%,
+    #b87888 60%,
+    #a07080 80%,
+    #906070 100%
+  );
+}
+
+.pi-gender-bg-boy {
+  background: linear-gradient(
+    180deg,
+    #90a8d0 0%,
+    #8098c0 20%,
+    #7088b0 40%,
+    #6078a0 60%,
+    #507090 80%,
+    #406080 100%
+  );
+}
+
+.pi-gender-img {
+  width: 140px;
+  height: auto;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.4));
+  position: relative;
+  z-index: 1;
+}
+
+.pi-gender-selected {
+  animation: genderPick 0.6s ease-out;
+}
+
+@keyframes genderPick {
+  0% { filter: brightness(1); }
+  40% { filter: brightness(1.5); }
+  100% { filter: brightness(1); }
+}
+
+.pi-gender-label {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 3px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 1;
+}
+
+/* === Player sprite (after selection) === */
+.pi-player-sprite-area {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  z-index: 5;
+}
+
+.pi-player-sprite {
+  width: 110px;
+  height: auto;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+}
+
+/* === Dialog box — D/P style (bottom of top screen) === */
+.pi-dialog-area {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  right: 6px;
+  z-index: 30;
+  cursor: pointer;
+}
+
+.pi-dialog-box {
+  background: #f8f8f0;
+  border: 3px solid #585858;
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow:
+    0 0 0 1px #a0a0a0,
+    0 3px 8px rgba(0, 0, 0, 0.3);
+  min-height: 50px;
+  position: relative;
+}
+
+.pi-dialog-text {
+  color: #303030;
+  font-size: 13px;
+  line-height: 1.6;
+  min-height: 36px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.pi-cursor {
+  color: #303030;
+  animation: cursorBlink 0.6s steps(1) infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.pi-dialog-advance {
+  text-align: right;
+  color: #585858;
+  font-size: 12px;
+  margin-top: 2px;
+  animation: advBounce 1s ease-in-out infinite;
+}
+
+@keyframes advBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+/* === Gender buttons (inside dialog) === */
+.pi-gender-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.pi-btn {
+  padding: 7px 22px;
+  background: linear-gradient(180deg, #f0e8c0 0%, #d8d0a8 100%);
+  border: 2px solid #908860;
+  border-radius: 6px;
+  color: #3a3a2a;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pi-btn:hover {
+  background: linear-gradient(180deg, #ffd860 0%, #e0c040 100%);
+  border-color: #a08800;
+  transform: scale(1.05);
+}
+
+.pi-btn:active {
+  transform: scale(0.97);
+}
+
+/* === Name input === */
+.pi-name-area {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.pi-name-input {
+  flex: 1;
+  padding: 7px 12px;
+  background: #fff;
+  border: 2px solid #908860;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #2a2a1a;
+  outline: none;
+}
+
+.pi-name-input:focus {
+  border-color: #c0a030;
+  box-shadow: 0 0 6px rgba(200, 160, 0, 0.3);
+}
+
+.pi-name-input::placeholder {
+  color: #b0a880;
+}
+
+.pi-btn-confirm {
+  font-size: 11px;
+  padding: 7px 14px;
+}
+
+.pi-btn-confirm:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* === Starter selection === */
+.pi-starter-area {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 6;
+}
+
+.pi-starter-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.pi-starter-option:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: #ffd700;
+  transform: scale(1.08);
+}
+
+.pi-starter-sprite {
+  width: 64px;
+  height: 64px;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+}
+
+.pi-starter-label {
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #3a3a2a;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.pi-starter-arrow {
+  font-size: 28px;
+  color: #ffd700;
+  margin: 0 4px;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+  align-self: center;
+}
+
+.pi-starter-selected {
+  flex-direction: row;
+  gap: 8px;
+  cursor: default;
+  background: rgba(255, 255, 255, 0.25);
+  border-color: #ffd700;
+}
+
+.pi-starter-selected:hover {
+  transform: none;
+}
+
+.pi-starter-evo {
+  animation: evoReveal 0.8s ease-out;
+}
+
+@keyframes evoReveal {
+  0% { opacity: 0; transform: scale(0.5); filter: brightness(3); }
+  60% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); filter: none; }
+}

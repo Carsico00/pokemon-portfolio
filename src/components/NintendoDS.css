@@ -1,0 +1,331 @@
+/* Nintendo DS Theme Assets y Elementos Visuales */
+
+/* Pantalla DS - Sistema Dual */
+.ds-framework {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #5a4a3a 0%, #7a6a5a 50%, #5a4a3a 100%);
+  border: 8px solid #2a1a0a;
+  box-shadow: 
+    0 0 0 4px #8b7b6b,
+    0 0 0 8px #2a1a0a,
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+    0 8px 20px rgba(0, 0, 0, 0.8);
+  gap: 8px;
+  padding: 8px;
+  overflow: hidden;
+}
+
+.ds-screen {
+  border: 3px solid #3a2a1a;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  background: linear-gradient(135deg, rgba(230, 194, 148, 0.9), rgba(240, 214, 168, 0.95));
+}
+
+.ds-screen-top {
+  flex: 1;
+  background: linear-gradient(180deg, #e6c294 0%, #f0d6a8 50%, #e6c294 100%);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ds-screen-bottom {
+  flex: 0 0 200px;
+  background: linear-gradient(180deg, #d4b896 0%, #dcc4a0 50%, #d4b896 100%);
+  overflow: hidden;
+}
+
+/* Paneles de Información */
+.info-panel {
+  background: linear-gradient(135deg, #d4b896 0%, #dcc4a0 100%);
+  border: 2px solid #5a4a3a;
+  border-radius: 0;
+  padding: 6px;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.info-panel-title {
+  font-size: 10px;
+  font-weight: bold;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #5a4a3a;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.info-panel-content {
+  font-size: 9px;
+  color: #333;
+  line-height: 1.2;
+}
+
+/* Botones Nintendo DS */
+.ds-button {
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 0;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  transition: all 0.1s ease;
+  box-shadow: 
+    1px 1px 0px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.ds-button:hover {
+  background: linear-gradient(135deg, #ff3333 0%, #ff0000 100%);
+  transform: translate(-1px, -1px);
+  box-shadow: 
+    2px 2px 0px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.ds-button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 
+    0 0 0px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.ds-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, #999999 0%, #777777 100%);
+}
+
+.ds-button-blue {
+  background: linear-gradient(135deg, #0000ff 0%, #0000cc 100%);
+}
+
+.ds-button-blue:hover {
+  background: linear-gradient(135deg, #3333ff 0%, #0000ff 100%);
+}
+
+.ds-button-green {
+  background: linear-gradient(135deg, #00cc00 0%, #009900 100%);
+}
+
+.ds-button-green:hover {
+  background: linear-gradient(135deg, #33ff33 0%, #00cc00 100%);
+}
+
+/* Barras de Estado */
+.status-bar-container {
+  width: 100%;
+  height: 12px;
+  background: #000;
+  border: 1px solid #333;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.status-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff00 0%, #ffff00 50%, #ff0000 100%);
+  transition: width 0.3s ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.status-bar-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Grid Tiles */
+.tile-grid {
+  display: grid;
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 6px;
+  border-radius: 0;
+}
+
+.tile {
+  border-radius: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.1s ease;
+}
+
+.tile:hover {
+  transform: scale(0.98);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+/* Dialog Box - Estilo DS */
+.ds-dialog {
+  background: linear-gradient(135deg, #e6c294 0%, #f0d6a8 100%);
+  border: 3px solid #5a4a3a;
+  border-radius: 0;
+  padding: 12px;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  font-family: 'Orbitron', sans-serif;
+  position: relative;
+  z-index: 100;
+}
+
+.ds-dialog-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #5a4a3a;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+}
+
+.ds-dialog-content {
+  font-size: 11px;
+  color: #333;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.ds-dialog-buttons {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+/* Pokemon Type Colors - Nintendo DS Palette */
+.type-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 0;
+  font-size: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.type-normal { background: linear-gradient(135deg, #999999 0%, #777777 100%); }
+.type-fighting { background: linear-gradient(135deg, #dd5555 0%, #bb3333 100%); }
+.type-flying { background: linear-gradient(135deg, #9999ff 0%, #7777dd 100%); }
+.type-poison { background: linear-gradient(135deg, #dd55dd 0%, #bb33bb 100%); }
+.type-ground { background: linear-gradient(135deg, #ddaa55 0%, #bb8833 100%); }
+.type-rock { background: linear-gradient(135deg, #ccaa55 0%, #aa8833 100%); }
+.type-bug { background: linear-gradient(135deg, #99dd55 0%, #77bb33 100%); }
+.type-ghost { background: linear-gradient(135deg, #9955dd 0%, #7733bb 100%); }
+.type-steel { background: linear-gradient(135deg, #99ccdd 0%, #77aaaa 100%); }
+.type-fire { background: linear-gradient(135deg, #ff5555 0%, #dd3333 100%); }
+.type-water { background: linear-gradient(135deg, #4488dd 0%, #2266bb 100%); }
+.type-grass { background: linear-gradient(135deg, #44dd44 0%, #22bb22 100%); }
+.type-electric { background: linear-gradient(135deg, #f0e68c 0%, #d4af37 100%); color: #000; text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6); }
+.type-ice { background: linear-gradient(135deg, #88ddff 0%, #66bbdd 100%); }
+.type-dragon { background: linear-gradient(135deg, #7755ff 0%, #5533dd 100%); }
+.type-dark { background: linear-gradient(135deg, #555555 0%, #333333 100%); }
+.type-fairy { background: linear-gradient(135deg, #ff88ff 0%, #dd66dd 100%); }
+.type-psychic { background: linear-gradient(135deg, #ff55ff 0%, #dd33dd 100%); }
+
+/* Animaciones características */
+@keyframes dsGlow {
+  0%, 100% {
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes dsPress {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(1px, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+.ds-animated {
+  animation: dsGlow 1.5s ease-in-out infinite;
+}
+
+.ds-pressed {
+  animation: dsPress 0.4s ease-out;
+}
+
+/* Scroll Bar Style */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #e6c294 0%, #d4b896 100%);
+  border: 1px solid #5a4a3a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8b7355 0%, #6a5a4a 100%);
+  border: 1px solid #3a2a1a;
+  border-radius: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #a0927d 0%, #8b7a6a 100%);
+}
+
+/* Smooth Pixel Perfect */
+* {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Efecto de perspectiva 3D sutil */
+.ds-perspective {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Sonido visual (impulse feedback) */
+.ds-click {
+  animation: click 0.1s ease-out;
+}
+
+@keyframes click {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
